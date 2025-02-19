@@ -2,6 +2,7 @@
 const contentBox = document.getElementById('content-box');
 
 function decryptUrl() {
+    contentBox.innerHTML="";
     let encodedURL = document.getElementById("urlBox").value;
     fetch(encodedURL)
     .then(response => response.text())
@@ -66,11 +67,12 @@ function decryptUrl() {
     grid.forEach(row => {
         row.forEach(col => {
             if (col.length == 0) {
-                col.push(" ");
+                col.push("\u00A0");
             }
         });
     });
 
+    console.log(grid);
     grid.forEach(row => {
         let divRow = document.createElement('div');
         divRow.classList.add('row');
